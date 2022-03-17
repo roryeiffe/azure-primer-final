@@ -13,12 +13,12 @@ public class UserController {
     private UserRepository userRepository;
 
     @PostMapping
-    public void addUser(@RequestBody User user) {
-        userRepository.save(user);
+    public User addUser(@RequestBody User user) {
+        return userRepository.save(user);
     }
 
     @GetMapping("/{id}")
     public User getUser(@PathVariable("id") Long id) {
-        return userRepository.getById(id);
+        return userRepository.findById(id).get();
     }
 }
